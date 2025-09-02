@@ -25,4 +25,8 @@ export class NavbarComponent {
     })
   } 
 
+  selectType(type: string): void {
+    console.log(type);
+  }
+
 }

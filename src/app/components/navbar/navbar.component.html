@@ -1,0 +1,26 @@
+<div class="w-full relative h-screen">
+  <div class="bg-gray-300 w-full absolute z-1 p-6">
+    <div class="container mx-auto flex justify-between items-center">
+      <a routerLink="/" class=" text-lg font-semibold">PokeApp</a>
+      <div class="space-x-5 flex ">
+        <input type="text" placeholder="Search..." class="px-2 py-1 rounded"/> 
+        <button type="button" class="flex items-center space-x-2 border rounded-full border-gray-300 cursor-pointer rounded px-4 py-2 hover:bg-gray-200">
+          <span class="pi pi-star"></span>
+          <span>Favorites</span>
+          <span>3</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-54 h-full absolute flex bottom-0 bg-gray-300 z-0 ">
+    <div class="mt-24 w-full flex flex-col items-center">
+      @for (type of types; track $index) {
+        <button type="button" class="flex items-center space-x-2 border rounded-full border-gray-500 cursor-pointer rounded px-4 py-1 m-3 hover:bg-gray-200">
+          <span>{{type.nombre}}</span>
+        </button>
+       }      
+
+    </div>
+    
+  </div>
+</div>

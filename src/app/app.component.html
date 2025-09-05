@@ -1,4 +1,4 @@
 <div class="w-screen h-screen relative flex flex-col">
-  <app-navbar></app-navbar>
+  <app-navbar (sendTypes)="receptTypesSelected($event)"></app-navbar>
   <app-pokemons></app-pokemons>
 </div>

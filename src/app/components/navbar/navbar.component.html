@@ -1,5 +1,5 @@
-<div class="w-screen bg-gray-100 relative h-screen">
-  <div class="w-full absolute z-1 p-6">
+<div class="w-full relative z-2">
+  <div class="w-full bg-white absolute p-6">
     <div class="container mx-auto flex justify-between items-center">
       <a routerLink="/" class=" text-lg font-semibold">PokeApp</a>
       <div class="space-x-5 flex ">
@@ -12,7 +12,8 @@
       </div>
     </div>
   </div>
-  <div class="w-52 h-full absolute flex items-center z-0 ">
+</div>
+<div class="w-52 bg-white h-full absolute flex items-center z-1 ">
     <div class="mt-16 w-full flex flex-col items-center">
       @for (type of types; track $index) {
         <button
@@ -20,16 +21,14 @@
           (click)="selectType(type)"
           [ngClass]="[
             'flex items-center cursor-pointer rounded w-26 justify-center py-1.5 m-2.5 bg-gray-120 hover:bg-gray-200',
-            typeSelected.includes(type.id) ? 'bg-gray-200' : 'bg-gray-100'
+            isSelectedType(type) ? 'bg-gray-200' : 'bg-gray-100'
           ]"
         >
         <span [style.color]="type.color">
            {{ type.nombre }}
         </span>
       </button>
-       }      
+     }
 
     </div>
-    
-  </div>
 </div>

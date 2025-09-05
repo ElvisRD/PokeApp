@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
   types: any[] = [];
-  typeSelected: any = [];
+  typesSelected: any = [];
+  @Output() sendTypes = new EventEmitter<any>();
 
   constructor(
     private pokemonService: PokemonService
@@ -27,13 +28,20 @@ export class NavbarComponent {
     })
   } 
 
+  isSelectedType(type: any): boolean {
+    return this.typesSelected.some((t: any)=> t.id === type.id);
+  }
+
   selectType(type: any): void {
-    if(this.typeSelected.includes(type.id)){
-      this.typeSelected = this.typeSelected.filter((t: any) => t !== type.id);
+    if(this.typesSelected.some((t: any)=> t.id === type.id)){
+      this.typesSelected = this.typesSelected.filter((t: any) => t.id !== type.id);
     }else{
-      this.typeSelected.push(type.id);
+      if(this.typesSelected.length < 3){ 
+          this.typesSelected.push({id: type.id, name: type.name});
+      }
     }
     
+    this.sendTypes.emit(this.typesSelected);
   }
 
 }

@@ -18,4 +18,13 @@ export class PokemonService {
   getTypesPokemon(): Observable<any> {
     return this.http.get('assets/data/types.json');
   }
+
+  getPokemonDetails(url: string): Observable<any> {
+    return this.http.get(url);
+  }
+  
+
+  getPokemonByType(type: string): Observable<any> {
+    return this.http.get(`https://pokeapi.co/api/v2/type/${type}`);
+  }
 }

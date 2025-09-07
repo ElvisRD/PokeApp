@@ -7,13 +7,15 @@ import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, PokemonsComponent],
+  imports: [NavbarComponent, PokemonsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'pokeApp';
-  pokemons = [];
+  loadingPokemons: boolean = false;
+  pokemons: any = [];
+  firstType: any
   typesSelected: any = [];
 
   constructor(
@@ -25,30 +27,49 @@ export class AppComponent {
   }
 
 
-  getPokemonsByType(types: any){
-    this.pokemonService.getPokemonByType(types[0].name).subscribe(
+  getPokemonsByType(){
+    this.loadingPokemons = true;
+    this.pokemonService.getPokemonByType(this.firstType).subscribe(
       (resp: any) => {
         this.getDataPokemon(resp.pokemon.map((p: any) => p.pokemon.url));
       },
       (error) => {
-        console.error(error);
+        console.error('Error get names Pokemons by type:', error);
       }
   )};
 
   getDataPokemon(urls: string[]){
-     const requests = urls.map(url => this.pokemonService.getPokemonDetails(url));
+    const requests = urls.map(url => this.pokemonService.getPokemonDetails(url));
 
     forkJoin(requests).subscribe({
       next: (results) => {
-        console.log('Datos de todos los Pokémon:', results);
+        this.pokemons = results.map
+        (pokemon => ({
+          order: pokemon.order,
+          name: pokemon.name,
+          weight: pokemon.weight,
+          height: pokemon.height,
+          stats: pokemon.stats,
+          image: pokemon.sprites.front_default,
+          types: pokemon.types.map((typeInfo: any) => typeInfo.type.name)
+        }));
       },
       error: (err) => {
-        console.error('Error al traer datos:', err);
+        console.error('Error get Pokemons details:', err);
+      },
+      complete: () => {
+        this.loadingPokemons = false;
       }
     });
+
   }
 
-  receptTypesSelected(event: any){
-    this.typesSelected = event;
+  receptTypesSelected(types: any){
+
+    if(this.firstType === types[0]?.name) return;
+    this.firstType = types[0]?.name;
+    this.typesSelected = types;
+    this.getPokemonsByType();
+    
   }
 }

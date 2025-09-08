@@ -1,13 +1,19 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
-import { TranslateService } from '@ngx-translate/core';
 import { TranslateModule} from '@ngx-translate/core';
 import { FlagSelectorComponent } from '../flag-selector/flag-selector.component';
+import { SwitchModeComponent } from '../switch-mode/switch-mode.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, TranslateModule, FlagSelectorComponent],
+  imports: 
+  [
+    CommonModule, 
+    TranslateModule, 
+    FlagSelectorComponent,
+    SwitchModeComponent
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -18,7 +24,6 @@ export class NavbarComponent {
 
   constructor(
     private pokemonService: PokemonService,
-    public translate: TranslateService
   ) {
    }
 

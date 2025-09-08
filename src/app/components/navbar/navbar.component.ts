@@ -3,10 +3,11 @@ import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateModule} from '@ngx-translate/core';
+import { FlagSelectorComponent } from '../flag-selector/flag-selector.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, FlagSelectorComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

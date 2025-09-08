@@ -1,0 +1,19 @@
+<div class="relative">
+  <div class="flex items-center gap-3 p-2.5 cursor-pointer rounded-lg hover:bg-gray-200 " (click)="toggleDropdown()">
+    <img [src]="selectedLang.flag" alt="bandera" class="flag-icon w-6 h-6">
+    <span>{{ selectedLang.name }}</span>
+    <span class="pi pi-angle-down"></span>
+  </div>
+  <div class="w-24 absolute rounded-lg">
+    @if(isOpen){
+      <ul class="w-full flex flex-col bg-white rounded-lg my-1">
+        @for (lang of languages; track $index) {
+          <li class="w-full p-2.5 cursor-pointer flex gap-3 hover:bg-gray-200" (click)="selectLanguage(lang)">
+              <img [src]="lang.flag" alt="flag" class="flag-icon w-6">
+              <span>{{ lang.name }}</span>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</div>

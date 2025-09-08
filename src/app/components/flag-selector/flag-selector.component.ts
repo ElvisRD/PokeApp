@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-flag-selector',
@@ -11,9 +12,15 @@ export class FlagSelectorComponent {
   selectedLang = { code: 'ES', name: 'Es', flag: 'assets/flags/es.png'}
 
   languages = [
-    { code: 'ES', name: 'Es', flag: 'assets/flags/es.png' },
-    { code: 'EN', name: 'En', flag: 'assets/flags/en.png' },
+    { code: 'es', name: 'Es', flag: 'assets/flags/es.png' },
+    { code: 'en', name: 'En', flag: 'assets/flags/en.png' },
   ];
+
+  constructor(
+    private translate: TranslateService
+  ){
+
+  }
 
   toggleDropdown(){
     this.isOpen = !this.isOpen
@@ -21,6 +28,7 @@ export class FlagSelectorComponent {
 
   selectLanguage(lang: any) {
     this.selectedLang = lang
+    this.translate.use(lang.code)
     
     this.isOpen = false;
   }

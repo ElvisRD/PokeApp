@@ -20,7 +20,7 @@ export class FlagSelectorComponent {
   }
 
   selectLanguage(lang: any) {
-    this.selectedLang = lang.code;
+    this.selectedLang = lang
     
     this.isOpen = false;
   }

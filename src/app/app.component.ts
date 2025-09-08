@@ -4,6 +4,7 @@ import { PokemonService } from './services/pokemon.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
 import { forkJoin } from 'rxjs';
+import typesPokemon from '../assets/data/types.json';
 
 @Component({
   selector: 'app-root',
@@ -38,6 +39,8 @@ export class AppComponent {
       }
   )};
 
+  
+
   getDataPokemon(urls: string[]){
     const requests = urls.map(url => this.pokemonService.getPokemonDetails(url));
 
@@ -45,14 +48,15 @@ export class AppComponent {
       next: (results) => {
         this.pokemons = results.map
         (pokemon => ({
-          order: pokemon.order,
+          order: pokemon.id,
           name: pokemon.name,
           weight: pokemon.weight,
           height: pokemon.height,
           stats: pokemon.stats,
           image: pokemon.sprites.front_default,
-          types: pokemon.types.map((typeInfo: any) => typeInfo.type.name)
+          types: pokemon.types.map((typeInfo: any) => typesPokemon.find((type) => type.name === typeInfo.type.name))
         }));
+        console.log(this.pokemons);
       },
       error: (err) => {
         console.error('Error get Pokemons details:', err);
@@ -65,8 +69,8 @@ export class AppComponent {
   }
 
   receptTypesSelected(types: any){
-
-    if(this.firstType === types[0]?.name) return;
+    
+    if(types.length === 0 || this.firstType === types[0]?.name) return;
     this.firstType = types[0]?.name;
     this.typesSelected = types;
     this.getPokemonsByType();

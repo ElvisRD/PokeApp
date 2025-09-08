@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChange, OnChanges } from '@angular/core';
 import { PokemonComponent } from '../pokemon/pokemon.component';
 
 @Component({
@@ -8,5 +8,9 @@ import { PokemonComponent } from '../pokemon/pokemon.component';
   styleUrl: './pokemons.component.scss'
 })
 export class PokemonsComponent {
+  @Input() pokemons: any;
 
+  /* ngOnChanges(changes: SimpleChange): void {
+    console.log(changes)
+  } */
 }

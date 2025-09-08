@@ -1,55 +1,53 @@
 <div class="flex w-full h-100 justify-center bg-red-300">
   <div class="w-11/12 bg-gray-300 h-full flex">
-    <div class="relative flex w-6/12 bg-red-400 items-center justify-center">
+    <div class="relative flex w-6/12 bg-blue-400 items-center justify-center">
       <div
         class="absolute top-2 left-0 bg-white flex justify-center items-center rounded-full w-15 h-15 z-2"
       >
-        <span class="text-sm">2.3m</span>
+        <span class="text-sm">{{ pkm?.height }}cm</span>
       </div>
       <div
         class="absolute top-2 right-0 bg-white flex justify-center items-center rounded-full w-15 h-15 z-2"
       >
-        <span class="text-sm">90.3kg</span>
+        <span class="text-sm">{{ pkm?.weight }}g</span>
       </div>
-      <div class="relative w-11/12 h-10/12 bg-white rounded-xl shadow-lg">
+      <div
+        class="relative max-w-[700px] w-9/12 h-11/12 bg-white rounded-xl shadow-lg"
+      >
         <div class="absolute w-full flex justify-center bottom-32 z-0">
-          <span class="number-pokemon">#150</span>
+          <span class="number-pokemon">#{{ pkm?.order }}</span>
         </div>
         <div class="absolute w-full top-26 flex justify-center w-35 h-35">
-          <img
-            class=""
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/150.svg"
-            alt="Mewtwo"
-          />
+          <img class="" [src]="pkm?.image" alt="Mewtwo" />
         </div>
         <div class="absolute w-full bottom-8 flex flex-col items-center z-10">
-          <span class="name-pkm">nombre</span>
-          <span class="type-pkm">tipo</span>
+          <span class="name-pkm capitalize">{{ pkm?.name }}</span>
+          <div class="flex gap-2 mt-2">
+            @for (type of pkm.types; track $index) {
+            <span [style.color]="type.color" class="text-type">{{
+              type.nombre
+            }}</span>
+            }
+          </div>
         </div>
       </div>
     </div>
-    <div class="flex w-6/12 bg-red-400 items-center justify-center">
-      <div class="w-11/12 h-10/12 p-12">
-        <div class="w-full flex items-center justify-between">
-          <span>Speed</span>
-          <span>130</span>
+    <div class="flex w-3/12">
+      <div class="w-full h-11/12 flex justify-center flex-col">
+        @for (stats of pkm.stats; track $index) {
+        <div class="grid grid-cols-4 gap-4 mb-2 items-center">
+          <span class="text-stats">{{stats.stat.name}}</span>
+          <span class="number-stats">{{stats.base_stat}}</span>
           <div class="w-60 bg-gray-200 rounded-full h-2.5">
-            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 20px"></div>
+            <div
+              class="bg-blue-600 h-2.5 rounded-full"
+              style="width: 20px"
+            ></div>
           </div>
-
         </div>
-        <div class="w-full flex items-center justify-between">
-          <span>Speed</span>
-          <span>130</span>
-          <div class="w-60 bg-gray-200 rounded-full h-2.5">
-            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 20px"></div>
-          </div>
-
-        </div>
-        
-        
-
+        }
       </div>
     </div>
+    <div class="w-3/12 bg-green-400">Stats</div>
   </div>
 </div>

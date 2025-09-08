@@ -25,10 +25,10 @@
           ]"
         >
         <span [style.color]="type.color">
-           {{ type.nombre }}
+           {{ ('navbar.types.' + type.name ) | translate }}
         </span>
+        
       </button>
      }
-
     </div>
 </div>

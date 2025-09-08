@@ -1,10 +1,12 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -14,8 +16,10 @@ export class NavbarComponent {
   @Output() sendTypes = new EventEmitter<any>();
 
   constructor(
-    private pokemonService: PokemonService
-  ) { }
+    private pokemonService: PokemonService,
+    public translate: TranslateService
+  ) {
+   }
 
   ngOnInit(): void {
     this.getTypes();

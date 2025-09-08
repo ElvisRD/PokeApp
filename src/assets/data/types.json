@@ -2,19 +2,16 @@
   {
     "id": 1,
     "name": "normal",
-    "nombre": "Normal",
     "color": "#A8A77A"
   },
   {
     "id": 2,
     "name": "fighting",
-    "nombre": "Lucha",
     "color": "#C22E28"
   },
   {
     "id": 3,
     "name": "flying",
-    "nombre": "Volador",
     "color": "#A98FF3"
   },
   {
@@ -26,97 +23,81 @@
   {
     "id": 5,
     "name": "ground",
-    "nombre": "Tierra",
     "color": "#E2BF65"
   },
   {
     "id": 6,
     "name": "rock",
-    "nombre": "Roca",
     "color": "#B6A136"
   },
   {
     "id": 7,
     "name": "bug",
-    "nombre": "Bicho",
     "color": "#A6B91A"
   },
   {
     "id": 8,
     "name": "ghost",
-    "nombre": "Fantasma",
     "color": "#735797"
   },
   {
     "id": 9,
     "name": "steel",
-    "nombre": "Acero",
     "color": "#B7B7CE"
   },
   {
     "id": 10,
     "name": "fire",
-    "nombre": "Fuego",
     "color": "#EE8130"
   },
   {
     "id": 11,
     "name": "water",
-    "nombre": "Agua",
     "color": "#6390F0"
   },
   {
     "id": 12,
     "name": "grass",
-    "nombre": "Planta",
     "color": "#7AC74C"
   },
   {
     "id": 13,
     "name": "electric",
-    "nombre": "Eléctrico",
     "color": "#F7D02C"
   },
   {
     "id": 14,
     "name": "psychic",
-    "nombre": "Psíquico",
     "color": "#F95587"
   },
   {
     "id": 15,
     "name": "ice",
-    "nombre": "Hielo",
     "color": "#96D9D6"
   },
   {
     "id": 16,
     "name": "dragon",
-    "nombre": "Dragón",
     "color": "#6F35FC"
   },
   {
     "id": 17,
     "name": "dark",
-    "nombre": "Siniestro",
     "color": "#705746"
   },
   {
     "id": 18,
     "name": "fairy",
-    "nombre": "Hada",
     "color": "#D685AD"
   },
   {
     "id": 20,
     "name": "stellar",
-    "nombre": "Estelar",
     "color": "#000000"
   },
   {
     "id": 20,
     "name": "unknown",
-    "nombre": "Desconocido",
     "color": "#000000"
   }
 ]

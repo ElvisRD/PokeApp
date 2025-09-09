@@ -24,19 +24,19 @@
           <span class="name-pkm capitalize">{{ pkm?.name }}</span>
           <div class="flex gap-2 mt-2">
             @for (type of pkm.types; track $index) {
-            <span [style.color]="type.color" class="text-type">{{
-              type.nombre
-            }}</span>
+            <span [style.color]="type.color" class="text-type">
+               {{ ('navbar.types.' + type.name ) | translate }}
+            </span>
             }
           </div>
         </div>
       </div>
     </div>
-    <div class="flex w-3/12">
+    <div class="flex w-4/12">
       <div class="w-full h-11/12 flex justify-center flex-col">
         @for (stats of pkm.stats; track $index) {
         <div class="grid grid-cols-4 gap-4 mb-2 items-center">
-          <span class="text-stats">{{stats.stat.name}}</span>
+          <span class="text-stats">{{('stats.'+stats.stat.name) | translate}}</span>
           <span class="number-stats">{{stats.base_stat}}</span>
           <div class="w-60 bg-gray-200 rounded-full h-2.5">
             <div
@@ -48,6 +48,6 @@
         }
       </div>
     </div>
-    <div class="w-3/12 bg-green-400">Stats</div>
+    <div class="w-2/12 bg-green-400">Stats</div>
   </div>
 </div>

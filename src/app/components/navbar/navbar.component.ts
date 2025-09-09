@@ -5,6 +5,7 @@ import { TranslateModule} from '@ngx-translate/core';
 import { FlagSelectorComponent } from '../flag-selector/flag-selector.component';
 import { SwitchModeComponent } from '../switch-mode/switch-mode.component';
 
+
 @Component({
   selector: 'app-navbar',
   imports: 
@@ -30,7 +31,6 @@ export class NavbarComponent {
   ngOnInit(): void {
     this.getTypes();
   }
-
 
   getTypes(): void {
     this.pokemonService.getTypesPokemon().subscribe(types => {

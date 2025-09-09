@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { PokemonService } from './services/pokemon.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
@@ -20,12 +19,8 @@ export class AppComponent {
   typesSelected: any = [];
 
   constructor(
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
   ) {}
-
-
-  ngOnInit(): void {
-  }
 
 
   getPokemonsByType(){
@@ -38,8 +33,6 @@ export class AppComponent {
         console.error('Error get names Pokemons by type:', error);
       }
   )};
-
-  
 
   getDataPokemon(urls: string[]){
     const requests = urls.map(url => this.pokemonService.getPokemonDetails(url));

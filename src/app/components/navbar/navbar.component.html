@@ -1,10 +1,10 @@
 <div class="w-full relative z-2">
-  <div class="w-full bg-white absolute p-6 dark:bg-gray-600" >
+  <div class="w-full bg-white absolute p-6 dark:bg-stone-800" >
     <div class="container mx-auto flex justify-between items-center">
-      <a routerLink="/" class=" text-lg font-semibold">PokeApp</a>
-      <div class="space-x-5 flex ">
+      <a routerLink="/" class=" text-lg font-semibold dark:text-white">PokeApp</a>
+      <div class="space-x-5 flex text-black dark:text-white">
         <input type="text" placeholder="Search..." class="px-2 py-1 rounded"/> 
-        <button type="button" class="flex items-center space-x-2 border rounded-full border-gray-300 cursor-pointer rounded px-4 py-2 hover:bg-gray-200">
+        <button type="button" class="flex items-center space-x-2 bg-gray-100 cursor-pointer rounded px-4 py-2 hover:bg-gray-200 dark:bg-stone-800 dark:hover:bg-stone-500">
           <span class="pi pi-star"></span>
           <span>Favorites</span>
           <span>3</span>
@@ -19,15 +19,15 @@
     </div>
   </div>
 </div>
-<div class="w-52 bg-white h-full absolute flex items-center z-1 ">
+<div class="w-52 bg-white h-full absolute flex items-center z-1 dark:bg-stone-800 ">
     <div class="mt-16 w-full flex flex-col items-center">
       @for (type of types; track $index) {
         <button
           type="button"
           (click)="selectType(type)"
           [ngClass]="[
-            'flex items-center cursor-pointer rounded w-26 justify-center py-1.5 m-2.5 bg-gray-120 hover:bg-gray-200',
-            isSelectedType(type) ? 'bg-gray-200' : 'bg-gray-100'
+            'flex items-center cursor-pointer rounded w-26 justify-center py-1.5 m-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-stone-700 dark:hover:bg-stone-500',
+            isSelectedType(type) ? 'bg-gray-200 dark:bg-stone-500' : 'bg-gray-100 dark:bg-stone-700'
           ]"
         >
         <span [style.color]="type.color">

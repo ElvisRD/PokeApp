@@ -1,27 +1,27 @@
-<div class="flex w-full h-100 justify-center bg-red-300">
-  <div class="w-11/12 bg-gray-300 h-full flex">
-    <div class="relative flex w-6/12 bg-blue-400 items-center justify-center">
+<div class="flex w-full h-100 justify-center bg-gray-200 dark:bg-zinc-700">
+  <div class="w-11/12 bg-gray-200 h-full flex dark:bg-zinc-700">
+    <div class="relative flex w-6/12 bg-gray-200 items-center justify-center dark:bg-zinc-700">
       <div
-        class="absolute top-2 left-0 bg-white flex justify-center items-center rounded-full w-15 h-15 z-2"
+        class="absolute top-2 left-0 bg-white flex justify-center items-center rounded-full w-15 h-15 z-2 bg-white dark:bg-zinc-800"
       >
-        <span class="text-sm">{{ pkm?.height }}cm</span>
+        <span class="text-sm text-zinc-400 dark:text-zinc-400">{{ pkm?.height }}cm</span>
       </div>
       <div
-        class="absolute top-2 right-0 bg-white flex justify-center items-center rounded-full w-15 h-15 z-2"
+        class="absolute top-2 right-0 bg-white flex justify-center items-center rounded-full w-15 h-15 z-2 bg-white dark:bg-zinc-800"
       >
-        <span class="text-sm">{{ pkm?.weight }}g</span>
+        <span class="text-sm text-zinc-400 dark:text-zinc-400">{{ pkm?.weight }}g</span>
       </div>
       <div
-        class="relative max-w-[700px] w-9/12 h-11/12 bg-white rounded-xl shadow-lg"
+        class="relative max-w-[700px] w-9/12 h-11/12 bg-white rounded-xl shadow-lg dark:bg-zinc-800"
       >
         <div class="absolute w-full flex justify-center bottom-32 z-0">
-          <span class="number-pokemon">#{{ pkm?.order }}</span>
+          <span class="number-pokemon text-gray-200 dark:text-zinc-600">#{{ pkm?.order }}</span>
         </div>
         <div class="absolute w-full top-26 flex justify-center w-35 h-35">
           <img class="" [src]="pkm?.image" alt="Mewtwo" />
         </div>
         <div class="absolute w-full bottom-8 flex flex-col items-center z-10">
-          <span class="name-pkm capitalize">{{ pkm?.name }}</span>
+          <span class="name-pkm capitalize text-zinc-500 dark:text-zinc-400">{{ pkm?.name }}</span>
           <div class="flex gap-2 mt-2">
             @for (type of pkm.types; track $index) {
             <span [style.color]="type.color" class="text-type">
@@ -35,12 +35,12 @@
     <div class="flex w-4/12">
       <div class="w-full h-11/12 flex justify-center flex-col">
         @for (stats of pkm.stats; track $index) {
-        <div class="grid grid-cols-4 gap-4 mb-2 items-center">
+        <div class="grid grid-cols-4 gap-4 mb-2 items-center text-zinc-500 dark:text-zinc-400">
           <span class="text-stats">{{('stats.'+stats.stat.name) | translate}}</span>
           <span class="number-stats">{{stats.base_stat}}</span>
-          <div class="w-60 bg-gray-200 rounded-full h-2.5">
+          <div class="w-60 bg-gray-300 rounded-full h-2.5 dark:bg-zinc-800">
             <div
-              class="bg-blue-600 h-2.5 rounded-full"
+              class="bg-gray-500 h-2.5 rounded-full dark:bg-zinc-400"
               style="width: 20px"
             ></div>
           </div>
@@ -48,6 +48,6 @@
         }
       </div>
     </div>
-    <div class="w-2/12 bg-green-400">Stats</div>
+    <!-- <div class="w-2/12 bg-green-400">Stats</div> -->
   </div>
 </div>

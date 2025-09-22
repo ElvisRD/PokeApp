@@ -1,8 +1,8 @@
-<div class="flex w-full h-100 justify-center bg-gray-200 dark:bg-zinc-700">
-  <div class="w-11/12 bg-gray-200 h-full flex dark:bg-zinc-700">
-    <div class="relative flex w-6/12 bg-gray-200 items-center justify-center dark:bg-zinc-700">
+<div class="flex w-full h-120 mt-12 justify-center bg-gray-200 dark:bg-zinc-700">
+  <div class="w-11/12 bg-gray-300 h-full flex dark:bg-zinc-700">
+    <div class="relative flex w-7/12 bg-gray-200 items-center justify-center dark:bg-zinc-700">
       <div
-        class="relative max-w-[700px] w-9/12 h-11/12 bg-white rounded-xl shadow-lg dark:bg-zinc-800"
+        class="relative max-w-[800px] w-9/12 h-11/12 bg-white rounded-xl shadow-lg dark:bg-zinc-800"
       >
       <div
         class="absolute bg-white -top-5 -left-5 flex justify-center items-center rounded-full w-15 h-15 z-2 bg-white dark:bg-zinc-800"
@@ -18,7 +18,7 @@
           <span class="number-pokemon text-gray-200 dark:text-zinc-600">#{{ pkm?.order }}</span>
         </div>
         <div class="absolute w-full top-26 flex justify-center w-35 h-35">
-          <img class="" [src]="pkm?.image" alt="Mewtwo" />
+          <img [src]="pkm?.image" alt="Mewtwo" />
         </div>
         <div class="absolute w-full bottom-8 flex flex-col items-center z-10">
           <span class="name-pkm capitalize text-zinc-500 dark:text-zinc-400">{{ pkm?.name }}</span>
@@ -32,22 +32,21 @@
         </div>
       </div>
     </div>
-    <div class="flex w-4/12">
+    <div class="flex w-5/12 bg-gray-300 mt-10 dark:bg-zinc-700 ">
       <div class="w-full h-11/12 flex justify-center flex-col">
         @for (stats of pkm.stats; track $index) {
-        <div class="grid grid-cols-4 gap-4 mb-2 items-center text-zinc-500 dark:text-zinc-400">
-          <span class="text-stats">{{('stats.'+stats.stat.name) | translate}}</span>
-          <span class="number-stats">{{stats.base_stat}}</span>
-          <div class="w-60 bg-gray-300 rounded-full h-2.5 dark:bg-zinc-800">
-            <div
-              class="bg-gray-500 h-2.5 rounded-full dark:bg-zinc-400"
-              style="width: 20px"
-            ></div>
+          <div class="grid grid-cols-4 gap-4 mb-2 items-center text-zinc-500 dark:text-zinc-400">
+            <span class="text-stats">{{('stats.'+stats.stat.name) | translate}}</span>
+            <span class="number-stats">{{stats.base_stat}}</span>
+            <div class="w-60 bg-gray-300 rounded-full h-2.5 dark:bg-zinc-800">
+              <div
+                class="bg-gray-500 h-2.5 rounded-full dark:bg-zinc-400"
+                [style.width]="(stats.base_stat/252 * 100) + '%'"
+              ></div>
+            </div>
           </div>
-        </div>
         }
       </div>
     </div>
-    <!-- <div class="w-2/12 bg-green-400">Stats</div> -->
   </div>
 </div>

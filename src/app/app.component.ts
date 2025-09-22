@@ -38,8 +38,9 @@ export class AppComponent {
     const requests = urls.map(url => this.pokemonService.getPokemonDetails(url));
 
     forkJoin(requests).subscribe({
-      next: (results) => {
-        this.pokemons = results.map
+      next: (res) => {
+        console.log(res)
+        this.pokemons = res.map
         (pokemon => ({
           order: pokemon.id,
           name: pokemon.name,
@@ -49,7 +50,6 @@ export class AppComponent {
           image: pokemon.sprites.front_default,
           types: pokemon.types.map((typeInfo: any) => typesPokemon.find((type) => type.name === typeInfo.type.name))
         }));
-        console.log(this.pokemons);
       },
       error: (err) => {
         console.error('Error get Pokemons details:', err);

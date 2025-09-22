@@ -2,18 +2,18 @@
   <div class="w-11/12 bg-gray-200 h-full flex dark:bg-zinc-700">
     <div class="relative flex w-6/12 bg-gray-200 items-center justify-center dark:bg-zinc-700">
       <div
-        class="absolute top-2 left-0 bg-white flex justify-center items-center rounded-full w-15 h-15 z-2 bg-white dark:bg-zinc-800"
+        class="relative max-w-[700px] w-9/12 h-11/12 bg-white rounded-xl shadow-lg dark:bg-zinc-800"
+      >
+      <div
+        class="absolute bg-white -top-5 -left-5 flex justify-center items-center rounded-full w-15 h-15 z-2 bg-white dark:bg-zinc-800"
       >
         <span class="text-sm text-zinc-400 dark:text-zinc-400">{{ pkm?.height }}cm</span>
       </div>
       <div
-        class="absolute top-2 right-0 bg-white flex justify-center items-center rounded-full w-15 h-15 z-2 bg-white dark:bg-zinc-800"
+        class="absolute -top-5 -right-5 bg-white flex justify-center items-center rounded-full w-15 h-15 z-2 bg-white dark:bg-zinc-800"
       >
         <span class="text-sm text-zinc-400 dark:text-zinc-400">{{ pkm?.weight }}g</span>
       </div>
-      <div
-        class="relative max-w-[700px] w-9/12 h-11/12 bg-white rounded-xl shadow-lg dark:bg-zinc-800"
-      >
         <div class="absolute w-full flex justify-center bottom-32 z-0">
           <span class="number-pokemon text-gray-200 dark:text-zinc-600">#{{ pkm?.order }}</span>
         </div>

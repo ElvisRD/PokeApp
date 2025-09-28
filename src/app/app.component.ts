@@ -15,6 +15,7 @@ export class AppComponent {
   title = 'pokeApp';
   loadingPokemons: boolean = false;
   pokemons: any = [];
+  pokemonsbackup: any = [];
   firstType: any
   typesSelected: any = [];
 
@@ -39,8 +40,7 @@ export class AppComponent {
 
     forkJoin(requests).subscribe({
       next: (res) => {
-        console.log(res)
-        this.pokemons = res.map
+        this.pokemonsbackup = res.map
         (pokemon => ({
           order: pokemon.id,
           name: pokemon.name,
@@ -50,6 +50,8 @@ export class AppComponent {
           image: pokemon.sprites.front_default,
           types: pokemon.types.map((typeInfo: any) => typesPokemon.find((type) => type.name === typeInfo.type.name))
         }));
+
+        this.pokemons = this.pokemonsbackup;
       },
       error: (err) => {
         console.error('Error get Pokemons details:', err);
@@ -62,11 +64,23 @@ export class AppComponent {
   }
 
   receptTypesSelected(types: any){
+    if(types.length === 0 || this.firstType === types[0]?.name){
+      if(types.length !== 0){
+        const pokemonsFiltered = this.pokemonsbackup.filter((pokemon: any) => 
+        types.every((type: any) => pokemon.types.some((pType: any) => pType.name === type.name))
+      );
+      this.pokemons = pokemonsFiltered;
+      console.log('no changes');
+      }else{
+        // When no types are selected, show all pokemons
+      }
+     
+    }else{
+      this.firstType = types[0]?.name;
+      this.typesSelected = types;
+      this.getPokemonsByType();
+    }
     
-    if(types.length === 0 || this.firstType === types[0]?.name) return;
-    this.firstType = types[0]?.name;
-    this.typesSelected = types;
-    this.getPokemonsByType();
     
   }
 }

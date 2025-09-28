@@ -10,7 +10,4 @@ import { PokemonComponent } from '../pokemon/pokemon.component';
 export class PokemonsComponent {
   @Input() pokemons: any;
 
-  /* ngOnChanges(changes: SimpleChange): void {
-    console.log(changes)
-  } */
 }

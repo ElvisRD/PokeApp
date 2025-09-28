@@ -9,5 +9,10 @@ import { PokemonComponent } from '../pokemon/pokemon.component';
 })
 export class PokemonsComponent {
   @Input() pokemons: any;
+  pokemonFavorites: any = [];
+
+  ngOnInit() {
+   this.pokemonFavorites = JSON.parse(localStorage.getItem('favoritesPokemon') || '[]');
+  }
 
 }

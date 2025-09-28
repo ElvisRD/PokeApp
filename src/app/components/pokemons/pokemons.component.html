@@ -2,7 +2,11 @@
   <div class="ml-52 w-full pt-22">
     <div class="w-full bg-gray-200 dark:bg-zinc-700">
       @for (pkm of pokemons; track $index) {
-        <app-pokemon [pkm]="pkm" class="w-full "></app-pokemon>
+        <app-pokemon 
+          [pkm]="pkm" 
+          [pokemonFavorites]="pokemonFavorites" 
+          class="w-full ">
+        </app-pokemon>
       }
 
     </div>

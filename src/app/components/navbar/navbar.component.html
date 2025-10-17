@@ -7,7 +7,7 @@
         <button type="button" class="flex items-center space-x-2 bg-gray-100 cursor-pointer rounded px-4 py-2 hover:bg-gray-200 dark:bg-zinc-800 dark:hover:bg-zinc-500">
           <span class="pi pi-star"></span>
           <span>Favorites</span>
-          <span>3</span>
+          <span>{{favoritePokemon.length}}</span>
         </button>
       </div>
       <div>
@@ -25,6 +25,21 @@
         <button
           type="button"
           (click)="selectType(type)"
+          [ngClass]="{
+            'bg-gray-200 dark:bg-zinc-500': type.state,
+            'bg-gray-100 dark:bg-zinc-700': !type.state,
+            'flex items-center cursor-pointer rounded w-26 justify-center py-1.5 m-2.5 hover:bg-gray-200 dark:hover:bg-zinc-500': true
+          }"
+        >
+          <span [style.color]="type.color">
+            {{ ('navbar.types.' + type.name) | translate }}
+          </span>
+        </button>
+        
+
+        <!-- <button
+          type="button"
+          (click)="selectType(type)"
           [ngClass]="[
             'flex items-center cursor-pointer rounded w-26 justify-center py-1.5 m-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-500',
             isSelectedType(type) ? 'bg-gray-200 dark:bg-zinc-500' : 'bg-gray-100 dark:bg-zinc-700'
@@ -34,7 +49,7 @@
            {{ ('navbar.types.' + type.name ) | translate }}
         </span>
         
-      </button>
+      </button> -->
      }
     </div>
 </div>

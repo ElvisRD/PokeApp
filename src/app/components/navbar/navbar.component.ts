@@ -20,38 +20,52 @@ import { SwitchModeComponent } from '../switch-mode/switch-mode.component';
 })
 export class NavbarComponent {
   types: any[] = [];
-  typesSelected: any = [];
+  typesSelected: any[] = [];
+  favoritePokemon: any[] = [];
   @Output() sendTypes = new EventEmitter<any>();
 
   constructor(
     private pokemonService: PokemonService,
   ) {
+
    }
 
   ngOnInit(): void {
     this.getTypes();
+    this.selectType({id: 1, name: 'normal'});
   }
 
   getTypes(): void {
     this.pokemonService.getTypesPokemon().subscribe(types => {
-      this.types = types;
+      this.types = types.map((type: any) => ({id: type.id, name: type.name, color: type.color, state: type.name === 'normal' ? true : false}));
     })
   } 
 
-  isSelectedType(type: any): boolean {
-    return this.typesSelected.some((t: any)=> t.id === type.id);
+
+  getFavorites(): void {
+    
   }
 
+
   selectType(type: any): void {
-    if(this.typesSelected.some((t: any)=> t.id === type.id)){
-      this.typesSelected = this.typesSelected.filter((t: any) => t.id !== type.id);
-    }else{
-      if(this.typesSelected.length < 3){ 
-          this.typesSelected.push({id: type.id, name: type.name});
+
+    if(!type.state){
+      if(this.typesSelected.length < 3){
+        type.state = true;
+        this.typesSelected.push({id: type.id, name: type.name});
       }
+    }else{
+      type.state = false;
+      this.typesSelected = this.typesSelected.filter((t: any) => t.id !== type.id);
     }
-    
+
+    if(this.typesSelected.length === 0){
+      this.types.find((t: any) => t.name === 'normal').state = true;
+      this.typesSelected.push({id: 1, name: 'normal'});
+    }
+
     this.sendTypes.emit(this.typesSelected);
+
   }
 
 }

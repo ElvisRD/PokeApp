@@ -1,17 +1,25 @@
 <div class="w-full h-screen bg-gray-200 flex z-2 dark:bg-zinc-700">
   <div class="ml-52 w-full pt-22">
     <div class="w-full bg-gray-200 dark:bg-zinc-700">
-      @for (pkm of pokemons; track $index) {
+      @if(!loadPokemons){
+        @for (pkm of pokemons; track $index) {
         <app-pokemon 
           [pkm]="pkm" 
-          [pokemonFavorites]="pokemonFavorites" 
+          [favoritePokemon]="favoritePokemon" 
           class="w-full ">
         </app-pokemon>
+        }
+        @empty {
+          <div class="w-full h-full flex justify-center items-center">
+            <span class="text-2xl font-semibold text-gray-500 dark:text-white">No se encontraron pokemons</span>
+          </div>
+        }
+      }@else {
+        <div class="w-full h-full flex justify-center items-center">
+          <span class="text-2xl font-semibold text-gray-500 dark:text-white">Cargando pokemons...</span>
+        </div>
       }
-
+      
     </div>
-
   </div>
-  
-
 </div>

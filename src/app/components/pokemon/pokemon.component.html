@@ -33,8 +33,8 @@
       </div>
     </div>
     <div class="flex relative w-5/12 bg-gray-300 mt-10 dark:bg-zinc-700 ">
-      <div (click)="favoritePokemon(pkm)" class="absolute top-2 right-2 text-yellow-400 text-2xl cursor-pointer">
-          @if (pokemonFavorites.includes(pkm?.order)) {
+      <div (click)="actionFavoritePokemon(pkm)" class="absolute top-2 right-2 text-yellow-400 text-2xl cursor-pointer">
+          @if (favoritePokemon.includes(pkm?.order)) {
             <span class="pi pi-star-fill"></span>
           } @else {
             <span class="pi pi-star"></span>

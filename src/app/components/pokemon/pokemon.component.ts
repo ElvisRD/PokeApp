@@ -9,18 +9,17 @@ import { TranslateModule} from '@ngx-translate/core';
 })
 export class PokemonComponent {
   @Input() pkm: any;
-  @Input() pokemonFavorites: any = [];
+  @Input() favoritePokemon: any = [];
 
-  favoritePokemon(pkm: any) {
-
-    const favorites = localStorage.getItem('favoritesPokemon');
-    let pkmArray = favorites ? JSON.parse(favorites) : [];
-
-    if (!pkmArray.some((p: any) => p.order === pkm.order)) {
-      pkmArray.push(pkm.order);
+  actionFavoritePokemon(pkm: any) {
+    if (!this.favoritePokemon.includes(pkm.order)) {
+      this.favoritePokemon.push(pkm.order);
+    }else{
+      this.favoritePokemon = this.favoritePokemon.filter((id: number) => id !== pkm.order);
     }
 
-    localStorage.setItem('favoritesPokemon', JSON.stringify(pkmArray));
+    console.log(this.favoritePokemon);
+    
   }
 
 

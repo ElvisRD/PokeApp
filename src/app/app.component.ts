@@ -23,7 +23,6 @@ export class AppComponent {
     private pokemonService: PokemonService,
   ) {}
 
-
   getPokemonsByType(){
     this.loadingPokemons = true;
     this.pokemonService.getPokemonByType(this.firstType).subscribe(
@@ -36,6 +35,8 @@ export class AppComponent {
   )};
 
   getDataPokemon(urls: string[]){
+    this.loadingPokemons = true;
+    
     const requests = urls.map(url => this.pokemonService.getPokemonDetails(url));
 
     forkJoin(requests).subscribe({

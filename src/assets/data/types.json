@@ -89,15 +89,5 @@
     "id": 18,
     "name": "fairy",
     "color": "#D685AD"
-  },
-  {
-    "id": 20,
-    "name": "stellar",
-    "color": "#000000"
-  },
-  {
-    "id": 20,
-    "name": "unknown",
-    "color": "#000000"
   }
 ]

@@ -11,16 +11,5 @@ export class PokemonComponent {
   @Input() pkm: any;
   @Input() favoritePokemon: any = [];
 
-  actionFavoritePokemon(pkm: any) {
-    if (!this.favoritePokemon.includes(pkm.order)) {
-      this.favoritePokemon.push(pkm.order);
-    }else{
-      this.favoritePokemon = this.favoritePokemon.filter((id: number) => id !== pkm.order);
-    }
-
-    console.log(this.favoritePokemon);
-    
-  }
-
 
 }

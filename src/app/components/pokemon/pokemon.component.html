@@ -20,7 +20,7 @@
         <div class="absolute w-full top-28 flex justify-center w-64 h-64">
           <img [src]="pkm?.image" alt="Mewtwo"  />
         </div>
-        <div class="absolute w-full bottom-10 flex flex-col items-center z-10">
+        <div class="absolute w-full bottom-10 flex flex-col items-center z-3">
           <span class="name-pkm capitalize text-zinc-500 dark:text-zinc-400">{{ pkm?.name }}</span>
           <div class="flex gap-4 mt-2">
             @for (type of pkm.types; track $index) {
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div class="flex relative w-5/12 bg-gray-300 mt-10 dark:bg-zinc-700 ">
+    <div class="flex relative w-5/12 bg-gray-200 mt-10 dark:bg-zinc-700 ">
       <div (click)="actionFavoritePokemon(pkm)" class="absolute top-2 right-2 text-yellow-400 text-2xl cursor-pointer">
           @if (favoritePokemon.includes(pkm?.order)) {
             <span class="pi pi-star-fill"></span>

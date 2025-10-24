@@ -14,7 +14,7 @@
 
 @if(isPhone){
   <div>
-    <div class="w-12 h-12 fixed bottom-4 right-4 dark:bg-zinc-800 rounded-full flex justify-center items-center z-6 text-white cursor-pointer hover:bg-zinc-500" (click)="changeVisibleTypes()">
+    <div class="w-12 h-12 fixed bottom-4 right-4 dark:bg-zinc-800 rounded-full flex justify-center items-center z-6 text-white cursor-pointer hover:bg-zinc-500" (click)="visibleTypes = !visibleTypes">
       <span [ngClass]="visibleTypes ? 'pi pi-times' : 'pi pi-filter'"></span>
     </div> 
   </div>

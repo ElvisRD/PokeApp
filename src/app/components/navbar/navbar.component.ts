@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, HostListener } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
 import { TranslateModule} from '@ngx-translate/core';
@@ -22,7 +22,7 @@ export class NavbarComponent {
   types: any[] = [];
   typesSelected: any[] = [];
   visibleTypes: boolean = true;
-  isPhone: boolean = true;
+  isPhone: boolean = false;
   favoritePokemon: any[] = [];
   @Output() sendTypes = new EventEmitter<any>();
 
@@ -33,6 +33,7 @@ export class NavbarComponent {
    }
 
   ngOnInit(): void {
+    this.checkDevice();
     this.getTypes();
     this.selectType({id: 1, name: 'normal'});
   }
@@ -43,16 +44,22 @@ export class NavbarComponent {
     })
   } 
 
-
-  getFavorites(): void {
-    
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkDevice();
   }
 
-  changeVisibleTypes(): void {
-    console.log(this.visibleTypes);
-    this.visibleTypes = !this.visibleTypes;
-  }
 
+  checkDevice(): void {
+      const width = window.innerWidth;
+
+      if(width <= 1024){
+        this.isPhone = true;
+      }else{
+        this.isPhone = false;
+        this.visibleTypes = true;
+      }
+  }
 
   selectType(type: any): void {
 

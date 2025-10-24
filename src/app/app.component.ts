@@ -52,6 +52,7 @@ export class AppComponent {
           types: pokemon.types.map((typeInfo: any) => typesPokemon.find((type) => type.name === typeInfo.type.name))
         }));
 
+        console.log(this.pokemonsbackup)
         this.pokemons = this.pokemonsbackup;
       },
       error: (err) => {

@@ -21,6 +21,8 @@ import { SwitchModeComponent } from '../switch-mode/switch-mode.component';
 export class NavbarComponent {
   types: any[] = [];
   typesSelected: any[] = [];
+  visibleTypes: boolean = true;
+  isPhone: boolean = true;
   favoritePokemon: any[] = [];
   @Output() sendTypes = new EventEmitter<any>();
 
@@ -44,6 +46,11 @@ export class NavbarComponent {
 
   getFavorites(): void {
     
+  }
+
+  changeVisibleTypes(): void {
+    console.log(this.visibleTypes);
+    this.visibleTypes = !this.visibleTypes;
   }
 
 
